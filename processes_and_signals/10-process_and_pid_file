@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#jbgjhg
 echo "$$" > /var/run/myscript.pid
 
 trap 'echo "I hate the kill command"; rm -f /var/run/myscript.pid; exit' SIGTERM
