@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
-#!/bin/bash
-# shellcheck disable=SC2009
-
-# 4-to_infinity_and_beyond prosesini başlat
+#printing
 ./4-to_infinity_and_beyond &
-
-# Prosesin PID-sini əldə et
 PID=$!
-
-# Prosesin dayandırılmasını gözləyirik
-trap "kill $PID; echo 'Terminated'" SIGINT
-
-# Skripti dayandırmaq üçün istifadəçidən siqnal gözləyirik
-wait $PID
+trap 'kill "$PID"; echo "Terminated"' SIGINT
+wait "$PID"
