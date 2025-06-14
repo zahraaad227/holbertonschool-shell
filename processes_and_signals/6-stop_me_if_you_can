@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
-#!/bin/bash
-# PID-ni tap
-PID=$(ps -eo pid,comm | awk '/4-to_infinity_and_beyond/ && $2=="4-to_infinity_and_beyond" {print $1}' | head -n 1)
-
-# kill istifadə etmədən dayandırmaq – sadəcə exit verə bilmərik
-# Bu halda daha təhlükəsiz alternativ: exec ilə boş komanda ilə əvəzləmək
-
-# Proses varsa
+#
+PID=$(pgrep -f "4-to_infinity_and_beyond")
 if [ -n "$PID" ]; then
-    echo "Stopping process $PID"
-    # prosesin stdin-ə bir şey yazmaq və ya stdout-u pozmaqla bağlamaq cəhdləri ola bilər
-    exec 3>/proc/$PID/fd/1 2>/dev/null || true
+  perl -e "kill 15, $PID"
 fi
