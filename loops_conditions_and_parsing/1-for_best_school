@@ -1,5 +1,7 @@
-#!/usr/bin/env bash
-#it prints Best School for ten times
-for {1..10};do
+#!/bin/bash
+#printing Best School word for ten times
+for i in $(seq 1 10)
+do
   echo "Best School"
 done
+
